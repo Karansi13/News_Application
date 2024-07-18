@@ -96,8 +96,13 @@ const CategoryPage = () => {
   }
 
   if (posts.length === 0) {
-    return <div>No posts found for this category</div>;
+    return (
+      <div className=' h-[70vh] sm:h-[65vh] p-3 w-full flex justify-center items-center'>
+        <div className='flex text-[1.5rem] sm:text-[2rem] font-sans'>There are no posts in this category</div>
+      </div>
+    );
   }
+  
 
   return (
     <div className='max-w-6xl mx-auto p-2 flex flex-col gap-8 py-7'>
@@ -105,7 +110,7 @@ const CategoryPage = () => {
         <h2 className='text-3xl font-semibold text-center'>Breaking News</h2>
         <div className="flex overflow-x-auto py-4">
                 <div className="flex flex-nowrap gap-4 px-4">
-                  {categoryPosts.map((post) => (
+                  {posts.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))}
                 </div>

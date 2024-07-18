@@ -146,6 +146,7 @@ export default function PostPage() {
       try {
         const res = await fetch(`/api/post/getposts?limit=3`);
         const data = await res.json();
+        console.log(data);
         if (res.ok) {
           setRecentPosts(data.posts);
         }

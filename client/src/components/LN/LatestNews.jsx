@@ -38,10 +38,10 @@ const LatestNews = () => {
       <div className="latest-news-title flex justify-between items-center cursor-pointer">
         <h2 className="text-2xl font-bold">Latest News</h2>
         <div className="latest-news-title-panel flex items-center cursor-pointer text-blue-500 dark:text-blue-300">
-          <Link to="/search" className="mr-2">
+          <Link to="/search" className="mr-2 text-black">
             See more
           </Link>
-          <FiChevronsRight className="title-icon" />
+          <FiChevronsRight className="title-icon text-black" />
         </div>
       </div>
       {loading ? (
@@ -57,11 +57,14 @@ const LatestNews = () => {
         </>
       ) : (
         latestNews.map((news) => (
-          <div key={news._id} className="mt-4">
-            <div className="news-box flex p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
-              <Link to={`/post/${news.slug}`} className="news-box-img w-1/3 mr-4">
+          <div key={news._id} className="mt-4 sm:flex-col">
+            <div className="news-box flex flex-col sm:flex-row p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+              {/* Image Section */}
+              <Link to={`/post/${news.slug}`} className="news-box-img mb-4 sm:mr-4 sm:mb-0 sm:w-1/3">
                 <img src={news.image} alt="news" className="w-full h-auto rounded-md" />
               </Link>
+              
+              {/* Content Section */}
               <div className="news-box-details flex-1">
                 <div className="news-box-info">
                   <Link to={`/post/${news.slug}`}>
@@ -87,7 +90,7 @@ const LatestNews = () => {
             </div>
             <hr className="border-gray-300 dark:border-gray-700 my-4" />
           </div>
-        ))
+        ))        
       )}
     </section>
   );

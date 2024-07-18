@@ -3,15 +3,10 @@ import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import Banner from "../components/Banner/Banner";
 import LatestNews from "../components/LN/LatestNews";
-import { FiChevronsRight } from "react-icons/fi"; // Assuming you're using React Icons for the chevrons
+import { FiChevronsRight } from "react-icons/fi"; 
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [breakingNews, setBreakingNews] = useState([]);
-  const [topStories, setTopStories] = useState([]);
-  const [featuredPosts, setFeaturedPosts] = useState([]);
-  const [editorsPicks, setEditorsPicks] = useState([]);
-  const [trendingNews, setTrendingNews] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,19 +14,6 @@ export default function Home() {
       const data = await res.json();
       console.log(data);
       setPosts(data.posts);
-      setBreakingNews(
-        data.posts.filter((post) => post.category === "Breaking News")
-      );
-      setTopStories(data.posts.slice(0, 5));
-      setFeaturedPosts(
-        data.posts.filter((post) => post.category === "Featured Posts")
-      );
-      setEditorsPicks(
-        data.posts.filter((post) => post.category === "Editor's Pick")
-      ); // Assuming there's a category for Editor's Pick
-      setTrendingNews(
-        data.posts.filter((post) => post.category === "Trending").slice(0, 3)
-      ); // Assuming 'Trending' category
     };
     fetchPosts();
   }, []);
@@ -76,12 +58,12 @@ export default function Home() {
                 </h2>
                 <div className="latest-news-title-panel flex items-center cursor-pointer text-blue-500 dark:text-blue-300">
                   <Link
-                    to={`/search/${category.toLowerCase()}`}
-                    className="mr-2 hover:underline"
+                    to={`/search?${category.toLowerCase()}`}
+                    className="mr-2 hover:underline text-black"
                   >
                     View all in {category.replace("-", " ")}
                   </Link>
-                  <FiChevronsRight className="title-icon" />
+                  <FiChevronsRight className="title-icon text-black" />
                 </div>
               </div>
               <div className="flex overflow-x-auto py-4">

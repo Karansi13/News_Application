@@ -19,17 +19,17 @@ const Footer = () => {
 
        
         const editorPicks = data.posts.filter(post =>
-          post.category.includes("Editor-Picks") 
+          post.category.includes("top-headlines") 
         ).slice(0, 3); 
 
         
         const fashion = data.posts.filter(post =>
-          post.category.includes("Fashion") 
+          post.category.includes("education") 
         ).slice(0, 3); 
 
        
         const lifestyle = data.posts.filter(post =>
-          post.category.includes("Lifestyle") 
+          post.category.includes("health") 
         ).slice(0, 3);
 
         // Set states
@@ -61,7 +61,7 @@ const Footer = () => {
             <div className='w-full pt-12'>
               <div className='flex flex-col md:flex-row md:gap-[2%]'>
                 <div className='flex flex-col gap-4 w-full md:w-[32%]'>
-                  <div className='flex text-white font-semibold'>EDITOR PICKS</div>
+                  <div className='flex text-white font-semibold'>Top Headlines</div>
                   {editorPicksPosts.map((post, idx) => (
                     <Link key={idx} to={`/post/${post.slug}`} className="w-full">
                       <Card
@@ -77,7 +77,7 @@ const Footer = () => {
                   ))}
                 </div>
                 <div className='flex flex-col gap-4 w-full md:w-[32%]'>
-                  <div className='flex text-white font-semibold'>FASHION</div>
+                  <div className='flex text-white font-semibold'>Education</div>
                   {fashionPosts.map((post, idx) => (
                     <Link key={idx} to={`/post/${post.slug}`} className="w-full">
                       <Card
@@ -93,7 +93,7 @@ const Footer = () => {
                   ))}
                 </div>
                 <div className='flex flex-col gap-4 w-full md:w-[32%]'>
-                  <div className='flex text-white font-semibold'>LIFESTYLE</div>
+                  <div className='flex text-white font-semibold'>Health</div>
                   {lifestylePosts.map((post, idx) => (
                     <Link key={idx} to={`/post/${post.slug}`} className="w-full">
                       <Card
