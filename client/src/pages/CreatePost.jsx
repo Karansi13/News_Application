@@ -289,6 +289,7 @@ export default function CreatePost() {
     image: "",
     video: "",
   });
+  console.log(formData)
   const [publishError, setPublishError] = useState(null);
 
   const navigate = useNavigate();
@@ -370,11 +371,13 @@ export default function CreatePost() {
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
+    console.log(handleInputChange)
   };
 
   const handleSelectChange = (e) => {
     const { value } = e.target;
     setFormData({ ...formData, category: value });
+    console.log(handleSelectChange)
   };
 
   const handleSubmit = async (e) => {
@@ -436,6 +439,7 @@ export default function CreatePost() {
             <option value="education">Education</option>
             <option value="bollywood-hollywood">Bollywood/ Hollywood</option>
             <option value="health">Health</option>
+            <option value="sports">Sports</option>
             <option value="international-news">International News</option>
           </Select>
         </div>

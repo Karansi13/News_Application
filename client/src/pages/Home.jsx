@@ -5,7 +5,11 @@ import Banner from "../components/Banner/Banner";
 import LatestNews from "../components/LN/LatestNews";
 import { FiChevronsRight } from "react-icons/fi"; 
 
+import { useSelector } from 'react-redux';
+
 export default function Home() {
+  const theme = useSelector((state) => state.theme.theme);
+  console.log(theme)
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -35,6 +39,7 @@ export default function Home() {
     );
   };
 
+
   return (
     <div className="max-w-6xl mx-auto p-4 flex flex-col gap-8 py-7">
       {/* Banner Section */}
@@ -44,6 +49,7 @@ export default function Home() {
       {/* Category Sections */}
       {categories.map((category, index) => {
         const categoryPosts = getCategoryPosts(category);
+        console.log("categoryPosts", categoryPosts)
         return (
           categoryPosts.length > 0 && (
             <section
@@ -59,14 +65,14 @@ export default function Home() {
                 <div className="latest-news-title-panel flex items-center cursor-pointer text-blue-500 dark:text-blue-300">
                   <Link
                     to={`/search?${category.toLowerCase()}`}
-                    className="mr-2 hover:underline text-black"
+                    className={`mr-2 hover:underline ${theme === 'light' ? 'text-black' : 'text-white'}`}
                   >
                     View all in {category.replace("-", " ")}
                   </Link>
-                  <FiChevronsRight className="title-icon text-black" />
+                  <FiChevronsRight className={`title-icon ${theme === 'light' ? 'text-black' : 'text-white'}`} />
                 </div>
               </div>
-              <div className="flex overflow-x-auto py-4">
+              <div className="flex overflow-x-auto py-4 scrollbar-hide">
                 <div className="flex flex-nowrap gap-4 px-4">
                   {categoryPosts.map((post) => (
                     <PostCard key={post._id} post={post} />

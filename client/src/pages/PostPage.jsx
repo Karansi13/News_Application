@@ -144,7 +144,7 @@ export default function PostPage() {
   useEffect(() => {
     const fetchRecentPosts = async () => {
       try {
-        const res = await fetch(`/api/post/getposts?limit=3`);
+        const res = await fetch(`/api/post/getposts`);
         const data = await res.json();
         console.log(data);
         if (res.ok) {
